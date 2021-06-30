@@ -1,0 +1,38 @@
+.content {
+    position: absolute;
+    /* top: 61px; */
+    left: 221px;
+    width: calc(100%-221px);
+    height: calc(100vh-61px);
+    /* background-color: #e9ebee; */
+}
+
+
+/* .page-title */
+
+.content .content-head {
+    margin: 16px;
+    /* background-color: #e9ebee; */
+}
+
+.content .content-head .title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.content .content-head button {}
+
+
+/* filter */
+
+.content .filter-bar {}
+
+
+/* grid */
+
+.content .grid {}
+
+
+/* paging */
+
+.content .paging-bar {}
