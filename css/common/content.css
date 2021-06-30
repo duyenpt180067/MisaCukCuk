@@ -1,18 +1,16 @@
-.content {
+/* .content {
     position: absolute;
-    /* top: 61px; */
+    top: 61px;
     left: 221px;
     width: calc(100%-221px);
     height: calc(100vh-61px);
-    /* background-color: #e9ebee; */
-}
+} */
 
 
 /* .page-title */
 
 .content .content-head {
     margin: 16px;
-    /* background-color: #e9ebee; */
 }
 
 .content .content-head .title {
@@ -20,12 +18,73 @@
     font-weight: bold;
 }
 
-.content .content-head button {}
+.content .content-feature {
+    text-align: end;
+}
+
+.content .content-feature button {
+    border: none;
+    background-color: #019160;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.content .content-feature button:hover {
+    background-color: #2FBE8E;
+}
 
 
 /* filter */
 
-.content .filter-bar {}
+
+/* find employee */
+
+.content .filter-bar .findid {
+    width: 100%;
+    border: solid 2px #e5e5e5;
+    border-radius: 5px;
+}
+
+.content .filter-bar .findid input {
+    width: calc(100% - 25px);
+    border: none;
+    height: 34px;
+}
+
+.content .filter-bar select {
+    width: 100%;
+    border: solid 2px #e5e5e5;
+    border-radius: 5px;
+    padding: 7.6px;
+}
+
+.content .filter-bar .findid input:focus {
+    outline: none;
+}
+
+.content .filter-bar select:focus {
+    outline: none;
+}
+
+.content .filter-bar {
+    padding: 0 15px;
+}
+
+
+/* reload */
+
+.content .filter-bar .reload {
+    text-align: end;
+}
+
+.content .filter-bar .reload i {
+    vertical-align: -webkit-baseline-middle;
+    border: solid 2px #e5e5e5;
+    padding: 9px;
+    border-radius: 5px;
+}
 
 
 /* grid */

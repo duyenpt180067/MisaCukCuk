@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="../css/common/header.css">
     <link rel="stylesheet" href="../css/common/navbar.css">
     <link rel="stylesheet" href="../css/common/main.css">
-    <link rel="stylesheet" href="../css/common/content.css">
     <link rel="stylesheet" href="../lib/font/fontawesome-5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/common/content.css">
 </head>
 
 <body>
@@ -86,18 +86,45 @@
     <!-- content -->
     <div class="content">
         <div class="content-head row">
-            <div class="title col-6">
+            <div class="title col-lg-6 col-md-6 col-sm-10">
                 Danh sách nhân viên
             </div>
-            <div class="content-feature col-6">
+            <div class="content-feature col-lg-6 col-md-6 col-sm-10">
                 <button>
                     <i class="fas fa-user-plus"></i>
                     Thêm nhân viên
                 </button>
             </div>
         </div>
-        <div class="filter-bar">
-
+        <div class="filter-bar row">
+            <div class="col-10">
+                <div class="row">
+                    <!-- Tìm theo mã tên -->
+                    <div class="col-4 findid">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Tìm kiếm theo Mã, Tên hoặc Số điện thoại">
+                    </div>
+                    <!-- tùy chọn phòng ban -->
+                    <div class="col-2">
+                        <select name="" id="findbydepartment" class="find_department">
+                            <option value="" selected disabled hidden>Tất cả phòng ban</option>
+                            <option value="department1">Phòng nhân sự</option>
+                            <option value="department2">Phòng đào tạo</option>
+                        </select>
+                    </div>
+                    <!-- tùy chọn vị trí -->
+                    <div class="col-2">
+                        <select name="" id="findbydepartmentjob" class="find_job">
+                            <option value="" selected disabled hidden>Tất cả vị trí</option>
+                            <option value="job1">Phòng nhân sự</option>
+                            <option value="job2">Phòng kế toán</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 reload">
+                <i class="fas fa-sync-alt"></i>
+            </div>
         </div>
         <div class="grid">
 
