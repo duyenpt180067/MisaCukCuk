@@ -42,22 +42,28 @@
 
 /* filter */
 
+.content .filter-bar {
+    padding: 0 15px;
+}
 
-/* find employee */
+
+/* find employee by input*/
 
 .content .filter-bar .findid {
     width: 100%;
-    border: solid 2px #e5e5e5;
+    border: solid 1px #bbbbbb;
     border-radius: 5px;
     display: inline-flex;
     align-items: baseline;
 }
 
-.content .filter-bar .findid .close {
+.content .filter-bar .findid .all-emp {
     background-color: #bbb;
     border-radius: 50%;
     padding: 3px 4px;
-    cursor: pointer
+    cursor: pointer;
+    font-size: inherit;
+    display: none;
 }
 
 .content .filter-bar .findid input {
@@ -66,23 +72,57 @@
     height: 34px;
 }
 
-.content .filter-bar select {
-    width: 100%;
-    border: solid 2px #e5e5e5;
-    border-radius: 5px;
-    padding: 7.6px;
-}
-
 .content .filter-bar .findid input:focus {
     outline: none;
 }
 
-.content .filter-bar select:focus {
+
+/* find by select */
+
+.content .filter-bar .find-select {
+    width: 100%;
+    border: solid 1px #bbbbbb;
+    border-radius: 5px;
+    margin: 0 10px;
+    padding: 0;
+}
+
+.content .filter-bar .find-select select {
+    width: inherit;
+    margin: 0;
+    border: none;
+    padding: 7.6px 5px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.content .filter-bar .find-select select:focus {
     outline: none;
 }
 
-.content .filter-bar {
-    padding: 0 15px;
+.content .filter-bar .find-department::after {
+    content: '';
+    position: absolute;
+    top: 7px;
+    right: 6px;
+}
+
+.content .filter-bar .find-select .div-arrow {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    background-color: white;
+    width: 20px;
+}
+
+.content .filter-bar .find-select .arrow {
+    background-image: url(../../lib/icon/down.png);
+    width: 20px;
+    height: 17px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
 }
 
 
@@ -94,7 +134,7 @@
 
 .content .filter-bar .reload i {
     vertical-align: -webkit-baseline-middle;
-    border: solid 2px #e5e5e5;
+    border: solid 1px #bbbbbb;
     padding: 9px;
     border-radius: 5px;
     cursor: pointer;
@@ -116,7 +156,7 @@
     height: 56px;
     display: inline-flex;
     align-items: center;
-    border-top: 2px solid #bbbbbb;
+    border-top: 1px solid #bbbbbb;
     padding-left: 16px;
 }
 

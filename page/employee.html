@@ -79,6 +79,9 @@
                 <select class="nameofcompany" id="">
                     <option value="Chi nhánh Misa miền Bắc">Nhà hàng Biển Đông</option>
                 </select>
+                <!-- <div class="div-arrow">
+                    <div class="arrow"></div>
+                </div> -->
             </div>
             <div class="account col-md-6 col-lg-6 col-sm-7">
                 <!-- <div style="display: flexbox;"> -->
@@ -92,7 +95,6 @@
         <div class="content">
             <div class="content-head row">
                 <div class="title col-lg-6 col-md-6 col-sm-5">
-                    <!-- <input type="text" value="Danh sách nhân viên" readonly="true"> -->
                     Danh sách nhân viên
                 </div>
                 <div class="content-feature col-lg-6 col-md-6 col-sm-7">
@@ -107,25 +109,33 @@
                     <div class="row">
                         <!-- Tìm theo mã tên -->
                         <div class="col-4 findid" id="findid">
-                            <i class="fas fa-search"></i>
-                            <input type="text" placeholder="Tìm kiếm theo Mã, Tên hoặc Số điện thoại">
-                            <i class="fas fa-times close"></i>
+                            <div class="find"><i class="fas fa-search"></i></div>
+                            <input type="text" id="findbyid" placeholder="Tìm kiếm theo Mã, Tên hoặc Số điện thoại">
+                            <i class="fas fa-times all-emp"></i>
                         </div>
                         <!-- tùy chọn phòng ban -->
-                        <div class="col-2">
-                            <select name="" id="findbydepartment" class="find-department">
+                        <div class="col-2 find-department find-select">
+                            <select name="" id="findbydepartment">
                                 <option value="" selected>Tất cả phòng ban</option>
                                 <option value="department1">Phòng nhân sự</option>
                                 <option value="department2">Phòng đào tạo</option>
                             </select>
+                            <!-- <i class="fas fa-chevron-up select-up"></i> -->
+                            <div class="div-arrow">
+                                <div class="arrow" id="arrow-department"></div>
+                            </div>
                         </div>
                         <!-- tùy chọn vị trí -->
-                        <div class="col-2">
-                            <select name="" id="findbydepartmentjob" class="find-job">
+                        <div class="col-2 find-job find-select">
+                            <select name="" id="findbyjob">
                                 <option value="" selected>Tất cả vị trí</option>
                                 <option value="job1">Phòng nhân sự</option>
                                 <option value="job2">Phòng kế toán</option>
                             </select>
+                            <!-- <i class="fas fa-chevron-up select-up"></i> -->
+                            <div class="div-arrow">
+                                <div class="arrow" id="arrow-job"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
