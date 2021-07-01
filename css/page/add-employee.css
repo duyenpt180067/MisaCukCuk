@@ -1,0 +1,145 @@
+.add-emp {
+    width: 936px;
+    box-shadow: 0px 0px 30px rgb(0 0 0 / 40%);
+    padding: 15px 0 0 0;
+    border-radius: 5px;
+    visibility: hidden;
+    position: relative;
+    margin-top: calc(30px - 100vh);
+}
+
+
+/* add class */
+
+.open-add-emp {
+    visibility: visible;
+}
+
+
+/* btn delete */
+
+.xpop {
+    text-align: end;
+}
+
+.xpop button {
+    border: none;
+    background-color: #fff;
+}
+
+.xpop img:hover {
+    box-shadow: 0px 5px 10px rgb(0 0 0 / 40%);
+}
+
+
+/* css input */
+
+.infoinput input {
+    width: 100%;
+    border: solid 3px #e5e5e5;
+    border-radius: 5px;
+    padding: 6px;
+}
+
+span {
+    color: red;
+}
+
+.infoinput select {
+    width: 100%;
+    border: solid 3px #e5e5e5;
+    border-radius: 5px;
+    padding: 6px;
+}
+
+.infoinput .salary {
+    display: flex;
+    border: solid 3px #e5e5e5;
+    border-radius: 5px;
+    padding: 6px;
+    width: 100%;
+    height: 41px;
+}
+
+.infoinput .salary input {
+    border: none;
+    direction: RTL;
+}
+
+.infoinput .salary p {
+    margin-top: 1.5px;
+}
+
+.line {
+    border: 2px solid #01B075;
+    width: 105px;
+}
+
+.formadd {
+    margin-top: 50px;
+}
+
+.infoinput p {
+    margin-bottom: 1px;
+    margin-top: 15px;
+}
+
+.job-information {
+    margin-top: 50px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* margin: 0; */
+}
+
+
+/* btn cancel - save */
+
+.cancel-save {
+    text-align: end;
+    margin-top: 24px;
+    padding: 13px 0;
+    background-color: #e5e5e5;
+}
+
+.save {
+    background-color: #019160;
+    font-size: 16px;
+    color: white;
+    font-weight: 450;
+    padding: 6px 24px;
+    border: none;
+    border-radius: 5px;
+}
+
+.save:hover {
+    background-color: #2FBE8E;
+}
+
+.cancel {
+    border: none;
+    background-color: #e5e5e5;
+    font-weight: 500;
+    width: 85px;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+
+/* common */
+
+button:focus {
+    outline: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+select:focus {
+    outline: none;
+}
