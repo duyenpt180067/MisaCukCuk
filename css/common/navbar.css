@@ -20,11 +20,11 @@
 
 .logo-site .toggle-icon {
     background-image: url(../../lib/img/toggle.png);
-    width: 28px;
-    height: 28px;
+    width: 31px;
+    height: 31px;
     background-size: contain;
     background-repeat: no-repeat;
-    margin-right: 10px;
+    cursor: pointer;
 }
 
 .logo-site .cukcuk-logo {
@@ -33,6 +33,7 @@
     background-image: url(../../lib/img/cukcuk-logo.png);
     background-repeat: no-repeat;
     background-size: contain;
+    margin-left: 10px;
 }
 
 

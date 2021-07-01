@@ -1,6 +1,6 @@
 .top-head {
-    /* position: relative; */
-    width: calc(100%-221px);
+    position: relative;
+    width: calc(100% - 221px);
     /* height: 60px; */
     border-bottom: solid 1px #e5e5e5;
     display: flex;
@@ -8,13 +8,19 @@
     padding: 10px 20px 10px 10px;
 }
 
+.account {
+    text-align: end;
+    display: block;
+}
+
 .account input {
     width: 100px;
     border: none;
     height: 34px;
+    cursor: inherit;
 }
 
-.account input:focus {
+input:focus {
     outline: none;
 }
 
