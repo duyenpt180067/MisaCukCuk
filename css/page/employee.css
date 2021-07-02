@@ -7,3 +7,31 @@
     width: 100%;
     /* visibility: hidden; */
 }
+
+
+/* .grid-employee .list-emp {
+    height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+} */
+
+
+/*  */
+
+
+/* table {
+    width: 100%;
+    display: block;
+}
+
+thead {
+    display: inline-block;
+    width: 100%;
+}
+
+tbody {
+    height: calc(100vh - 266px);
+    display: inline-block;
+    width: 100%;
+    overflow: auto;
+} */

@@ -5,7 +5,8 @@
     background-color: #ffffff;
     border-right: solid 1px #e5e5e5;
     justify-content: center;
-    padding: 0px 22px;
+    padding: 0px 14px;
+    cursor: pointer;
 }
 
 .navbarweb .logo-site {
@@ -53,12 +54,13 @@
     background-color: #e5e5e5;
 }
 
-.nav-item-icon img {
+.nav-item-icon i {
     width: 25px;
 }
 
 .navbar-init .nav-item-text {
-    font-size: 13px;
+    font-size: 14px;
     display: flex;
     align-items: center;
+    padding-left: 0;
 }

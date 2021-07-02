@@ -1,3 +1,22 @@
+//js navbar
+var check = true;
+$('.toggle-icon').click(function() {
+    check = !check;
+    console.log(check);
+    var nav_item_text = document.getElementsByClassName("nav-item-text");
+    if (check == true) {
+        for (let index = 0; index < 5; index++) {
+            console.log(nav_item_text[index]);
+            nav_item_text[index].style.display = "block";
+        }
+    }
+    if (check == false) {
+        for (let index = 0; index < 5; index++) {
+            nav_item_text[index].style.display = "none";
+        }
+    }
+})
+
 // show form add-emp
 var listemp = document.getElementById("employee");
 $('.btn-add-emp').click(function() {
