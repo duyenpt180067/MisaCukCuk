@@ -12,7 +12,6 @@ function loadData(_url) {
             return res;
         },
         error: function(res) {
-            // alert('fail!');
             return false;
         }
     });
@@ -21,7 +20,6 @@ function loadData(_url) {
  *  Author: PTDuyen (7/7/2021)
  */
 function postData(_url, data) {
-    console.log("test")
     return $.ajax({
         url: _url,
         method: 'POST',
@@ -34,7 +32,8 @@ function postData(_url, data) {
         },
         error: function(res) {
             console.log(res);
-            return false;
+            return res
+                // return false;
         }
     })
 }
@@ -53,9 +52,10 @@ function putData(_url, id, data) {
             console.log("ok");
             return res;
         },
-        error: function() {
-            alert('fail!');
-            return false;
+        error: function(res) {
+            console.log(res);
+            return res
+                // return false;
         }
     })
 
@@ -70,10 +70,12 @@ function delData(_url, id) {
         url: _urlDel,
         method: 'DELETE',
         success: function(res) {
+            console.log(res);
             return res;
         },
-        error: function() {
-            return false;
+        error: function(res) {
+            console.log(res);
+            return res;
         }
     })
 }

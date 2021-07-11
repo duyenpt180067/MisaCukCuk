@@ -45,6 +45,23 @@ class Employee {
     }
 
     /**
+     * Take employee by code
+     * Author: PTDuyen(1/7/2021)
+     */
+    getEmployeeById(code) {
+        var listGet = [];
+        let emp;
+        // let urlId = _urlEmployee + "/" + id;
+        return loadData(_urlEmployee).then(function(res) {
+            if (res != false) {
+                listGet = res;
+                // emp
+                return res;
+            } else return false;
+        })
+    }
+
+    /**
      * Load employee to table
      * Author: PTDuyen
      * Create: 7/7/2021
@@ -54,16 +71,14 @@ class Employee {
         let list = [];
         // $('table').empty();
         loadData(_urlEmployee).then(function(listEmp) {
-            if (listEmp != false) {
-                $.each(listEmp, function(index, _emp) {
-                    list.push(_this.formatData(_emp));
-                })
-                loadTable(list);
-                showToast("load-success");
-            } else {
-                showToast("load-fail");
-            }
-        });
+            $.each(listEmp, function(index, _emp) {
+                list.push(_this.formatData(_emp));
+            })
+            loadTable(list);
+            showToast("load-success");
+        }, function() {
+            showToast("load-fail");
+        })
     }
 
     /**
@@ -76,15 +91,13 @@ class Employee {
         delete emp.genderName;
         delete emp.positionName;
         delete emp.departmentName;
-        console.log(emp);
+        // console.log(emp);
         postData(_urlEmployee, emp).then(function(res) {
-            if (res != false) {
-                showToast("post-success");
-                $("#table-body").empty();
-                _this.loadEmployee();
-            } else {
-                showToast("post-fail");
-            }
+            console.log(res);
+            showToast("post-success");
+            _this.reloadTable();
+        }, function() {
+            showToast("post-fail");
         });
     }
 
@@ -100,13 +113,11 @@ class Employee {
         delete emp.positionName;
         delete emp.departmentName;
         putData(_urlEmployee, id, emp).then(function(res) {
-            if (res != false) {
-                showToast("put-success");
-                // $("")
-                _this.reloadTable();
-            } else {
-                showToast("put-fail");
-            }
+            showToast("put-success");
+            // $("")
+            _this.reloadTable();
+        }, function() {
+            showToast("put-fail");
         });
     }
 
@@ -117,13 +128,10 @@ class Employee {
     delEmployee(id) {
         let _this = this;
         delData(_urlEmployee, id).then(function(res) {
-            if (res == true) {
-                // _this.loadEmployee();
-
-                $("#table-body").empty();
-            } else {
-                showToast("delete-fail");
-            }
+            $("#table-body").empty();
+            _this.loadEmployee();
+        }, function() {
+            // showToast("delete-fail");
         });
     }
 
@@ -146,20 +154,15 @@ class Employee {
     }
 
 
-    /**
-     * Take the new code of employee
-     * Author: PTDuyen(10/7/2021)
-     */
-    newCode() {
-        loadData(_urlNewCode).then(function(res) {
-            if (res != false) {
-                newCode = res;
+    // /**
+    //  * Take the new code of employee
+    //  * Author: PTDuyen(10/7/2021)
+    //  */
+    // newCode() {
+    //     let _this = this;
+    //     _this.reloadTable();
 
-            } else {
-                newCode = false;
-            }
-        })
-    }
+    // }
 }
 
 
@@ -184,13 +187,16 @@ $(document).ready(function() {
         $('.update').removeClass('save');
         // validateForm();
         $(".update").on('click', function() {
-            $(".btn2-pop").on('click', function() {
-                $(".general-pop").css("display", 'none');
+            showInfoPopup("put");
+            var name = (" " + obj.FullName);
+            $(".notification-pop p b span").text(name);
+            $(".btn2-pop").off('click').on('click', function() {
+                $(".general-popup").css("display", 'none');
                 $(".add-item").css("display", 'none');
                 employee.putEmployee(obj.EmployeeId, obj);
             })
-            $(".btn1-pop").on('click', function() {
-                $(".general-pop").css("display", 'none');
+            $(".btn1-pop").off('click').on('click', function() {
+                $(".general-popup").css("display", 'none');
             })
         })
 
@@ -198,7 +204,7 @@ $(document).ready(function() {
 
     // delete when click thead th i---------------------------------------
     var listDel = [];
-    $('#table-body').on('click', 'tr td input', function() {
+    $('#table-body').off("click").on('click', 'tr td input', function() {
         if ($(this).prop("checked") == true) {
             console.log($(this).prop("checked"));
             listDel = listDel.filter(item => ((item) !== $(this).data()));
@@ -208,7 +214,7 @@ $(document).ready(function() {
             listDel = listDel.filter((item) => (item !== $(this).data()));
         }
     })
-    $("table thead tr th i").on('click', function() {
+    $("table thead tr th i").off("click").on('click', function() {
         var name = "";
         showInfoPopup("delete");
         $.each(listDel, function(index, item) {
@@ -216,10 +222,11 @@ $(document).ready(function() {
         })
         $(".notification-pop p b span").text(name);
         $(".general-popup").css("display", "block");
-        $(".btn1-pop").on("click", function() {
+        $(".btn1-pop").off("click").on("click", function() {
             $(".general-popup").css("display", "none");
         })
-        $(".btn2-pop").on("click", function() {
+        $(".btn2-pop").off("click").on("click", function() {
+            $(".general-popup").css("display", "none");
             $.each(listDel, function(index, item) {
                 listDel = listDel.filter(del => del != item);
                 employee.delEmployee(item.EmployeeId);
@@ -229,6 +236,8 @@ $(document).ready(function() {
                 $('#table-body').empty();
                 employee.loadEmployee(); //load fail --------------------------------------------------------------------------
             } else {
+                $('#table-body').empty();
+                employee.loadEmployee();
                 showToast("delete-fail");
             }
         })
@@ -318,10 +327,10 @@ $(document).ready(function() {
 
 
     // show form add employee-------------------------------------------------------------
-    employee.newCode();
+    // employee.newCode();
     $('.btn-add-emp').on("click", function() {
-
-        if (newCode != false) {
+        loadData(_urlNewCode).then(function(res) {
+            newCode = res;
             showToast("new-code-success");
             $('.add-item').css('display', 'flex');
             var dataInput = $("form input");
@@ -332,7 +341,7 @@ $(document).ready(function() {
             console.log()
             $('#code').focus();
             $('#code').addClass('input-focus');
-        } else {
+        }, function() {
             showToast("new-code-fail");
             $('.add-item').css('display', 'flex');
             var dataInput = $("form input");
@@ -341,22 +350,8 @@ $(document).ready(function() {
             })
             $('#code').focus();
             $('#code').addClass('input-focus');
-        }
-
+        })
         validateForm();
-    });
-
-
-    // close form add-emp--------------------------------------------------------------------------------------
-    $('.cancel, .btn-close-add').on("click", function() {
-        showInfoPopup("post-cancel");
-        $(".btn2-pop").on("click", function() {
-            $('.add-item').css('display', 'none');
-            $('.general-popup').css('display', 'none');
-        })
-        $(".btn1-pop").on("click", function() {
-            $('.general-popup').css('display', 'none');
-        })
     });
 
     //js for input---------------------------------------------------------------------------------------------
@@ -368,19 +363,45 @@ $(document).ready(function() {
     })
 
     // Add new employee-------------------------------------------------------------
-    $(".save").on('click', function() {
+    $(".save").off("click").click(function() {
         // emp = dataForm("#formAdd", emp);
         // console.log(emp);
         showInfoPopup("post");
-        $(".btn1-pop").on("click", function() {
+        $(".btn1-pop").off("click").on("click", function() {
             $('.general-popup').css('display', 'none');
         })
-        $(".btn2-pop").on("click", function() {
-            employee.postEmployee();
-            $('.general-popup').css('display', 'none');
-            $(".add-item").css('display', 'none');
+        $(".btn2-pop").off("click").on("click", function() {
+            var inputs = $("#formAdd input");
+            var invalid = 0;
+            $.each(inputs, function(index, input) {
+                if (validateInput(input) == false) {
+                    invalid += 1;
+                }
+                $(input).trigger("blur");
+            })
+            if (invalid > 0) {
+                $('.general-popup').css('display', 'none');
+                showToast("invalid-form");
+                return;
+            } else {
+                employee.postEmployee();
+                $('.general-popup').css('display', 'none');
+                $(".add-item").css('display', 'none');
+            }
         })
     })
 
-    // $(".")
+
+
+    // close form add-emp--------------------------------------------------------------------------------------
+    $('.cancel, .btn-close-add').click(function() {
+        showInfoPopup("post-cancel");
+        $(".btn2-pop").off("click").on("click", function() {
+            $('.add-item').css('display', 'none');
+            $('.general-popup').css('display', 'none');
+        })
+        $(".btn1-pop").off("click").on("click", function() {
+            $('.general-popup').css('display', 'none');
+        })
+    });
 })

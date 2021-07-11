@@ -117,6 +117,14 @@ function loadDataToForm(obj, _selectorForm) {
             // local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
             let date = [year, month, day].join('-');
             $(input).val(date);
+        } else if (fieldName.toLowerCase().includes("salary")) {
+            let salary = obj[fieldName].split(".");
+            let s = "";
+            for (let i = 0; i < salary.length; i++) {
+                s += salary[i];
+            }
+            s = parseInt(s);
+            $(input).val(s);
         } else {
             $(input).val(obj[fieldName]);
         }
@@ -192,110 +200,48 @@ function showTooltip(selector, mgs) {
  * Create: 8/7/2021
  */
 function validateForm(selector) {
-    var formInput = $(selector).find(' input');
-
+    var formInput = $(selector).find('input');
     $.each(formInput, function(index, _input) {
         $(_input).on('focus', function() {
             // -------------------------------When focus on input ---------------------------------------------------
             $(_input).addClass('input-focus');
             if ($(_input).siblings('.select-option').length != 0) {
-                console.log($(_input).siblings(".select-option"));
                 showOption($(_input).siblings(".select-option"), function() {});
             }
             if ($(_input).val() != "") {
                 $(_input).siblings(".xselect").css('visibility', 'visible');
                 delOption(_input, "");
             }
-            validateInput(_input)
             if (validateInput(_input) == false) {
-
+                $(_input).parent().find(".tooltipMgs").remove();
+            }
+        })
+        $(_input).on('blur', function() {
+            $(_input).siblings(".xselect").css('visibility', 'hidden');
+            $(_input).removeClass('input-focus');
+            $(_input).parent().find(".tooltipMgs").remove();
+            if ($(_input).siblings('.select-option').length != 0) {
+                hideOption($(_input).siblings(".select-option"), function() {});
+            }
+            if (validateInput(_input) == false) {
                 $(_input).addClass("invalid-input");
                 $(_input).removeClass("input-focus");
-                return false;
             }
         })
-        $(_input).on('change', function() {
-            if (($(_input).siblings('.select-option').length == 0)) {
-                $(_input).addClass('input-focus');
-            }
-            if ($(_input).val() != "") {
-                $(_input).siblings(".xselect").css('visibility', 'visible');
-                // console.log("ok")
-                delOption(_input, "");
-            }
-            if ($(_input).attr('validate')) {
-                $(".tooltipMgs").hide();
-            }
-        })
-        $(_input).on('focusout', function() {
-            // console.log($(_input).parent().attr('class'));
-            if ($(_input).siblings('.select-option').length == 0) {
-                // $(_input).removeClass('input-focus');
-            }
-        })
-
-        //-----------------------------------Validate--------------------------------------------------------------
-        // if ($(_input).attr('validate')) {
-        //     var tooltip = $(`<div></div>`);
-        //     var triangle = $(`<div id="triangle-down"></div>`);
-        //     var validate = $(_input).attr('validate');
-        //     $(_input).on('blur', function() {
-        //         if (($(_input).val() !== "")) {
-        //             if ($(_input).attr('fieldName') == "Email") {
-        //                 if ((email.test($(_input).val()) == false) && ($(_input).val() != "")) {
-        //                     // $(_input).attr('data-original-title', 'Vui lòng nhập đúng định dạng email!');
-        //                     tooltip.text("");
-        //                     tooltip.append("Vui lòng nhập đúng định dạng email");
-        //                     tooltip.append(triangle);
-        //                     tooltip.addClass("tooltipMgs");
-        //                     $(_input).parent().append(tooltip);
-        //                     $(_input).addClass("invalid-input");
-
-        //                     // $(_input).tooltip('show');
-        //                 } else if (email.test($(_input).val()) == true) {
-        //                     // $(_input).attr('data-original-title', null);
-        //                     tooltip.hide();
-        //                     $(_input).removeClass("invalid-input");
-        //                 }
-        //             } else if ($(_input).attr('fieldName') == "PhoneNumber") {
-        //                 if (phone.test($(_input).val()) == false && ($(_input).val() != "")) {
-        //                     tooltip.text("");
-        //                     tooltip.append("Vui lòng nhập đúng định dạng của số điện thoại");
-        //                     tooltip.append(triangle);
-        //                     tooltip.addClass("tooltipMgs");
-        //                     $(_input).parent().append(tooltip);
-        //                     $(_input).addClass("invalid-input");
-        //                 } else if (phone.test($(_input).val()) == true) {
-        //                     tooltip.hide();
-        //                     $(_input).removeClass("invalid-input");
-        //                 }
-        //             } else {
-        //                 $(".tooltipMgs").hide();
-        //                 $(_input).removeClass("invalid-input");
-        //             }
-        //         } else {
-        //             // console.log("okasa")
-        //             $(_input).removeClass('focus-input');
-        //             tooltip.text("");
-        //             tooltip.append("Vui lòng nhập " + validate);
-        //             tooltip.append(triangle);
-        //             tooltip.addClass("tooltipMgs");
-        //             $(_input).parent().append(tooltip);
-        //             $(_input).addClass("invalid-input");
-        //         }
-        //     })
-
-        //     // $(_input).on('change', function() {})
-        //     // console.log(validate);
-        // }
     })
-    return true;
+
+    // $.each(formInput, function(index, _input) {
+    //     if (validateInput(_input) == false) {
+    //         return false;
+    //     }
+    // })
+    // return true;
 }
 
-// $(".cancel").click(function() {
-//     console.log(validateForm("#formAdd"));
-//     console.log($("#formAdd").find("input"));
-// })
+$(".btn-add-emp").click(function() {
+    console.log(validateForm("#formAdd"));
+    console.log($("#formAdd").find("input"));
+})
 
 
 function validateInput(_input) {
@@ -306,10 +252,10 @@ function validateInput(_input) {
         var tooltip = $(`<div></div>`);
         var triangle = $(`<div id="triangle-down"></div>`);
         var validate = $(_input).attr('validate');
+        var code = $(_input).find("#code").val();
         if (($(_input).val() != "")) {
             if ($(_input).attr("fieldName").toLowerCase().includes("email")) {
                 if ((email.test($(_input).val()) == false) && ($(_input).val() != "")) {
-                    // $(_input).attr('data-original-title', 'Vui lòng nhập đúng định dạng email!');
                     tooltip.text("");
                     tooltip.append("Vui lòng nhập đúng định dạng email");
                     tooltip.append(triangle);
@@ -318,8 +264,21 @@ function validateInput(_input) {
                     $(_input).addClass("invalid-input");
                     return false;
                 } else if (email.test($(_input).val()) == true) {
-                    // $(_input).attr('data-original-title', null);
-                    tooltip.hide();
+                    tooltip.remove();
+                    $(_input).removeClass("invalid-input");
+                    return true;
+                }
+            } else if ($(_input).attr('fieldName').toLowerCase().includes("code")) {
+                if (checkEmployeeCode(code) == false) {
+                    tooltip.text("");
+                    tooltip.append("Mã nhân viên này đã tồn tại! Vui lòng nhập lại mã khác!");
+                    tooltip.append(triangle);
+                    tooltip.addClass("tooltipMgs");
+                    $(_input).parent().append(tooltip);
+                    $(_input).addClass("invalid-input");
+                    return false;
+                } else if (phone.test($(_input).val()) == true) {
+                    tooltip.remove();
                     $(_input).removeClass("invalid-input");
                     return true;
                 }
@@ -333,12 +292,12 @@ function validateInput(_input) {
                     $(_input).addClass("invalid-input");
                     return false;
                 } else if (phone.test($(_input).val()) == true) {
-                    tooltip.hide();
+                    tooltip.remove();
                     $(_input).removeClass("invalid-input");
                     return true;
                 }
             } else {
-                $(".tooltipMgs").hide();
+                $(".tooltipMgs").remove();
                 $(_input).removeClass("invalid-input");
                 return true;
             }
@@ -355,4 +314,16 @@ function validateInput(_input) {
     } else {
         return true;
     }
+}
+
+function checkEmployeeCode(code) {
+    var employee = new Employee();
+    var check;
+    employee.getEmployeeById(code).then(function(res) {
+        check = res;
+        // console.log(res);
+        if (check == false) {
+            return false;
+        } else return check;
+    });
 }

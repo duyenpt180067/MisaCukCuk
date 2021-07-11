@@ -192,7 +192,7 @@ function showInfoPopup(action) {
         title = "Form cập nhật thông tin";
         message = "Bạn có chắc muốn <b> Cập nhật thông tin nhân viên <span></span></b> không?";
         btn1 = "Hủy";
-        btn2 = "Cập nhật";
+        btn2 = "Lưu";
         pop.find(".icon-pop").append(img);
         p_mgs.append(message);
         pop.find(".notification-pop").append(p_mgs);
@@ -201,7 +201,7 @@ function showInfoPopup(action) {
         pop.find(".btn2-pop").addClass("primary-pop");
     } else if (action == "delete") {
         title = "Xóa thông tin nhân viên";
-        message = "Bạn có chắc muốn <b> Xóa thông tin nhân viên <span></span></b> không?";
+        message = "Bạn có chắc muốn <b> Xóa thông tin <i></i> nhân viên <span></span></b> không?";
         btn1 = "Hủy";
         btn2 = "Xóa";
         p_title.text(title);
@@ -268,6 +268,10 @@ function showToast(action) {
         icon.addClass("icon-toast-blue");
         content.text("Lấy mã nhân viên mới thất bại! Vui lòng nhập mã mới hoặc thử lại, hoặc báo cho quản trị viên!")
         btnx.css("color", "#D8EAFF");
+    } else if (action == "invalid-form") { // de-f
+        icon.addClass("icon-toast-red");
+        content.text("Dữ liệu không hợp lệ! Vui lòng kiểm tra lại!")
+        btnx.css("color", "#FFCECE");
     }
     toast.addClass("show-toast");
     toast.append(icon);
