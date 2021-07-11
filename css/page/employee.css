@@ -1,37 +1,169 @@
-.grid-employee {
-    height: calc(100vh - 158px);
-}
-
 .employee {
     height: 100vh;
     width: 100%;
-    /* visibility: hidden; */
 }
 
 
-/* .grid-employee .list-emp {
-    height: 100px;
-    overflow-y: auto;
-    overflow-x: hidden;
-} */
+/* .page-title */
 
-
-/*  */
-
-
-/* table {
-    width: 100%;
-    display: block;
+.content .content-head {
+    padding: 16px 16px 16px 10px;
 }
 
-thead {
-    display: inline-block;
-    width: 100%;
+.content .content-head .title {
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    width: 190px;
+    white-space: nowrap;
 }
 
-tbody {
-    height: calc(100vh - 266px);
-    display: inline-block;
+.content .content-feature {
+    position: absolute;
+    right: 30px;
+}
+
+.content .content-feature button {
+    border: none;
+    background-color: #019160;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.content .content-feature button:hover {
+    background-color: #2FBE8E;
+}
+
+
+/* filter */
+
+.content .filter-bar {
+    padding: 0 15px;
+}
+
+
+/* find employee by input*/
+
+.content .filter-bar .findid {
     width: 100%;
-    overflow: auto;
-} */
+    border: solid 1px #bbbbbb;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    height: 40px;
+}
+
+.content .filter-bar .findid .all-emp {
+    background-color: #bbb;
+    border-radius: 50%;
+    padding: 3px 4px;
+    cursor: pointer;
+    font-size: inherit;
+    display: none;
+}
+
+.content .filter-bar .findid input {
+    width: calc(100% - 25px);
+    border: none;
+    height: 34px;
+}
+
+.content .filter-bar .findid input:focus {
+    outline: none;
+}
+
+
+/* find by select */
+
+.content .filter-bar .find-select {
+    border-radius: 4px;
+    height: 40px;
+    max-width: 190px;
+}
+
+.content .filter-bar .find-select .select {
+    width: calc(100%);
+    padding-left: 16px;
+    border-radius: 4px;
+    padding-right: 60px;
+    border: solid 1px #bbbbbb;
+    height: 100%;
+}
+
+.content .filter-bar .find-select .select-option div {
+    height: 40px;
+}
+
+.content .filter-bar .find-select .xselect {
+    top: 12px;
+    right: 45px;
+}
+
+.content .filter-bar .find-select .select-option div i {
+    width: 16px;
+    margin-right: 10px;
+    color: white;
+    visibility: hidden;
+}
+
+.content .filter-bar .find-select .select-option div:focus>i {
+    visibility: visible;
+}
+
+.content .filter-bar .find-select .div-arrow {
+    border-left: 1px solid #bbb;
+    border-radius: 0 4px 4px 0;
+}
+
+.iconCheck {
+    visibility: visible;
+}
+
+
+/* reload */
+
+.content .filter-bar .reload {
+    text-align: end;
+}
+
+.content .filter-bar .reload i {
+    vertical-align: -webkit-baseline-middle;
+    border: solid 1px #bbbbbb;
+    padding: 9px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+/* grid */
+
+.content .grid {
+    width: 100%;
+    height: calc(100% - 171px);
+    margin-top: 15px;
+}
+
+
+/* paging */
+
+.content .paging-bar {
+    width: 100%;
+    height: 56px;
+    display: inline-flex;
+    align-items: center;
+    border-top: 1px solid #bbbbbb;
+    padding-left: 16px;
+}
+
+.content .paging-bar .amount-employee {
+    position: absolute;
+    left: calc(100% - 139px);
+}
+
+@media (max-width: 768px) {
+    .content .content-feature button span {
+        display: none;
+    }
+}

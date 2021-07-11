@@ -1,0 +1,83 @@
+@keyframes toastDown {
+    from {
+        opacity: 0;
+        top: 0;
+    }
+    to {
+        opacity: 1;
+        top: 75px;
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+
+.toastMgs {
+    position: absolute;
+    display: flex;
+    height: 48px;
+    font-size: 13px;
+    border-radius: 4px;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+    width: fit-content;
+    align-items: center;
+    padding-left: 20px;
+    top: 75px;
+    left: 35%;
+    z-index: 1;
+    background-color: white;
+    visibility: hidden;
+}
+
+.show-toast {
+    visibility: visible;
+    animation: toastDown ease 3s, fadeOut linear 1s 3s forwards;
+}
+
+.toastMgs .icon-toast {
+    width: 28px;
+    border-radius: 50%;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-image: url(../../lib/icon/icon-warning-red.png); */
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.icon-toast-red {
+    background-image: url("../../lib/icon/icon-warning-red.png");
+}
+
+.icon-toast-yellow {
+    background-image: url("../../lib/icon/icon-warning-yellow.png");
+}
+
+.icon-toast-green {
+    background-image: url("../../lib/icon/icon-warning-green.png");
+}
+
+.icon-toast-blue {
+    background-image: url("url(../../lib/icon/icon-warning-blue.png");
+}
+
+.toastMgs .content-toast {
+    padding-right: 40px;
+    padding-left: 10px;
+}
+
+.toastMgs .xtoast {
+    justify-content: center;
+    background-color: white;
+    border: none;
+    height: 100%;
+    width: 28px;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
