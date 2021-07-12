@@ -141,6 +141,7 @@ span {
     padding-right: 65px;
     border: solid 1px #bbb;
     border-radius: 5px;
+    cursor: auto;
 }
 
 .infoinput .info .select-option {
@@ -234,7 +235,8 @@ input[type=number]::-webkit-outer-spin-button {
     background-color: #2FBE8E;
 }
 
-.cancel {
+.cancel,
+.cancel-update {
     border: none;
     background-color: #e5e5e5;
     font-weight: 500;
@@ -243,7 +245,8 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 5px;
 }
 
-.cancel:hover {
+.cancel,
+.cancel-update:hover {
     background-color: #e5e5e5;
 }
 

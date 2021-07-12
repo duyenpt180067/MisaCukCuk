@@ -128,10 +128,10 @@
                         </div>
                         <!-- Find by department -->
                         <div class="col-3 find-department find-select">
-                            <input class="select" id="department" readonly="true" title="Tùy chọn phòng ban" value="Tất cả phòng ban">
+                            <input class="select" id="department" readonly="true" title="Tùy chọn phòng ban" placeholder="Tất cả phòng ban">
                             <div class="xselect"><i class="fas fa-times"></i></div>
                             <!-- Option department -->
-                            <div class="all-department select-option"></div>
+                            <div class="all-department select-option" selectName="DepartmentName" selectValue="DepartmentId"></div>
                             <!-- arrow -->
                             <div class="div-arrow arrow-department" id="findbydepartment">
                                 <i class="fas fa-chevron-down arrow department-down"></i>
@@ -140,9 +140,9 @@
                         </div>
                         <!-- Find by job -->
                         <div class="col-3 find-job find-select">
-                            <input class="select" id="job" readonly="true" title="Tùy chọn vị trí" value="Tất cả vị trí">
+                            <input class="select" id="job" readonly="true" title="Tùy chọn vị trí" placeholder="Tất cả vị trí">
                             <div class="xselect"><i class="fas fa-times"></i></div>
-                            <div class="all-job select-option"></div>
+                            <div class="all-job select-option" selectName="PositionName" selectValue="PositionId"></div>
                             <div class="div-arrow arrow-job" id="findbyjob">
                                 <i class="fas fa-chevron-down arrow job-down"></i>
                                 <i class="fas fa-chevron-up arrow job-up" style="font-size: 0;"></i>
@@ -209,7 +209,7 @@
                             <label for="defaultacc"><img src="../lib/img/default-avatar.jpg" alt=""></label>
                             <p>(Vui lòng chọn ảnh có định dạng .jpg, .jpeg, .png, .gif.)</p>
                         </div>
-                        <form class="col-9" id="formAdd">
+                        <form class="col-9" id="formAdd" autocomplete="off">
                             <!-- general info -->
                             <div class="general-information">
                                 <div class="title">
@@ -242,7 +242,7 @@
                                         <div class="find-select find-gender info">
                                             <input name="" fieldName="GenderName" id="gender" class="gender infoinput select" placeholder="Chọn giới tính" name="gender">
                                             <div class="xselect"><i class="fas fa-times"></i></div>
-                                            <div class="select-option all-gender">
+                                            <div class="select-option all-gender" setName="GenderName" setValue="GenderId">
                                                 <div id="male" class="genders">Nam</div>
                                                 <div id="female" class="genders">Nữ</div>
                                                 <div id="other" class="genders">Khác</div>
@@ -302,7 +302,7 @@
                                         <div class="find-select find-position info">
                                             <input name="" fieldName="PositionName" id="position" class="position infoinput select" placeholder="Chọn vị trí" name="">
                                             <div class="xselect"><i class="fas fa-times"></i></div>
-                                            <div class="select-option all-position">
+                                            <div class="select-option all-position" selectName="PositionName" selectValue="PositionId">
                                             </div>
                                             <div class="div-arrow arrow-info" id="findbyposition">
                                                 <i class="fas fa-chevron-down arrow"></i>
@@ -319,7 +319,7 @@
                                         <div class="find-select find-formdepartment info">
                                             <input name="" fieldName="DepartmentName" id="formdepartment" class="formdepartment infoinput select" placeholder="Chọn phòng ban" name="">
                                             <div class="xselect"><i class="fas fa-times"></i></div>
-                                            <div class="select-option all-formdepartment">
+                                            <div class="select-option all-formdepartment" selectName="DepartmentName" selectValue="DepartmentId">
                                             </div>
                                             <div class="div-arrow arrow-info" id="findbyformdepartment">
                                                 <i class="fas fa-chevron-down arrow"></i>
@@ -358,7 +358,7 @@
                                         <div class="find-select find-status info">
                                             <input name="" fieldName="WorkStatus" id="status" class="status infoinput select" placeholder="Chọn trạng thái làm việc" name="">
                                             <div class="xselect"><i class="fas fa-times"></i></div>
-                                            <div class="select-option all-status">
+                                            <div class="select-option all-status" setName="WorkStatus" setValue="WorkStatusId">
                                                 <div id="" class="statuss">Đang làm việc</div>
                                                 <div id="" class="statuss">Đã thôi việc</div>
                                             </div>
@@ -426,10 +426,9 @@
 <script src='../js/lib/jquery-3.6.0.min.js?v=1.1'></script>
 <script src='../js/lib/ajax.jquery.min.js?v=1.1'></script>
 <script src="../js/lib/jquery-ui.js?v=1.1"></script>
-<script src="../js/common/common.js?v=1.1"></script>
+<script src="../js/common/base.js?v=1.1"></script>
 <script src='../js/common/header.js?v=1.1'></script>
 <script src='../js/common/navbar.js?v=1.1'></script>
-<script src="../js/common/base.js?v=1.1"></script>
 <script src='../js/common/form.js'></script>
 <script src='../js/page/employee.js?v=1.1'></script>
 <script src="../js/page/department.js"></script>

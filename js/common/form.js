@@ -1,6 +1,6 @@
 // js for select gender
 var checkGender = false;
-$('#findbygender, #gender').on('click', function() {
+$('#findbygender').on('click', function() {
     checkGender = !checkGender;
     checkPosition = false;
     checkFormDepartment = false;
@@ -18,7 +18,7 @@ $('#findbygender, #gender').on('click', function() {
     } else {
         hideOption('.all-gender', function() {});
     }
-    clickOutElement('#findbygender, #gender', function() {
+    clickOutElement('#findbygender', function() {
         checkGender = false;
         hideOption('all-gender', function() {});
     })
@@ -27,7 +27,7 @@ $('#findbygender, #gender').on('click', function() {
 
 // js for select department
 var checkPosition = false;
-$('#findbyposition, #position').on('click', function() {
+$('#findbyposition').on('click', function() {
     checkPosition = !checkPosition;
     checkGender = false;
     checkFormDepartment = false;
@@ -41,7 +41,7 @@ $('#findbyposition, #position').on('click', function() {
     if (checkPosition == false) {
         hideOption('.all-position', function() {});
     }
-    clickOutElement('#findbyposition, #position', function() {
+    clickOutElement('#findbyposition', function() {
         checkPosition = false;
         hideOption('.all-position', function() {})
     });
@@ -50,7 +50,7 @@ $('#findbyposition, #position').on('click', function() {
 
 // js for select department
 var checkFormDepartment = false;
-$('#findbyformdepartment, #formdepartment').on('click', function() {
+$('#findbyformdepartment').on('click', function() {
     checkFormDepartment = !checkFormDepartment;
     checkPosition = false;
     checkGender = false;
@@ -64,7 +64,7 @@ $('#findbyformdepartment, #formdepartment').on('click', function() {
     if (checkFormDepartment == false) {
         hideOption('.all-formdepartment', function() {});
     }
-    clickOutElement('#findbyformdepartment, #formdepartment', function() {
+    clickOutElement('#findbyformdepartment', function() {
         checkFormDepartment = false;
         hideOption('.all-formdepartment', function() {})
     });
@@ -73,7 +73,7 @@ $('#findbyformdepartment, #formdepartment').on('click', function() {
 
 // js for select department
 var checkStatus = false;
-$('#findbystatus, #status').on('click', function() {
+$('#findbystatus').on('click', function() {
     checkStatus = !checkStatus;
     checkPosition = false;
     checkGender = false;
@@ -87,7 +87,7 @@ $('#findbystatus, #status').on('click', function() {
     if (checkStatus == false) {
         hideOption('.all-status', function() {});
     }
-    clickOutElement('#findbystatus, #status', function() {
+    clickOutElement('#findbystatus', function() {
         checkStatus = false;
         hideOption('.all-status', function() {})
     });
@@ -184,16 +184,6 @@ function dataForm(_selector, obj) {
     return obj;
 }
 
-
-/**
- * Show the tooltip 
- * Author: PTDuyen
- * Create: 10/7/2021
- */
-function showTooltip(selector, mgs) {
-
-}
-
 /**
  * Validate Form 
  * Author: PTDuyen
@@ -229,21 +219,15 @@ function validateForm(selector) {
             }
         })
     })
-
-    // $.each(formInput, function(index, _input) {
-    //     if (validateInput(_input) == false) {
-    //         return false;
-    //     }
-    // })
-    // return true;
 }
 
-$(".btn-add-emp").click(function() {
-    console.log(validateForm("#formAdd"));
-    console.log($("#formAdd").find("input"));
-})
 
-
+/**
+ * Author: PTDuyen
+ * Check an input is validated
+ * @param {*} _input 
+ * @returns true/false
+ */
 function validateInput(_input) {
     // var formInput = $('form input');
     if ($(_input).attr('validate')) {
@@ -316,14 +300,14 @@ function validateInput(_input) {
     }
 }
 
-function checkEmployeeCode(code) {
-    var employee = new Employee();
-    var check;
-    employee.getEmployeeById(code).then(function(res) {
-        check = res;
-        // console.log(res);
-        if (check == false) {
-            return false;
-        } else return check;
-    });
-}
+// function checkEmployeeCode(code) {
+//     var employee = new Employee();
+//     var check;
+//     employee.getEmployeeById(code).then(function(res) {
+//         check = res;
+//         // console.log(res);
+//         if (check == false) {
+//             return false;
+//         } else return check;
+//     });
+// }
